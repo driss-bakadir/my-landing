@@ -3,28 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viking Saga: Dragonborn</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Genshin Impact</title>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
         :root {
-            --primary-color: #0A192F;
-            --secondary-color: #122238;
-            --accent-color: #64FFDA;
-            --text-color: #CCD6F6;
-            --light-text: #8892B0;
+            --primary-color: rgba(10, 15, 31, 0.85);
+            --secondary-color: rgba(18, 24, 43, 0.85);
+            --accent-color: #8EE7FF;
+            --accent-strong: #00C9FF;
+            --text-color: #EAF3FF;
+            --light-text: #A9B7D0;
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--primary-color);
+            font-family: 'Inter', sans-serif;
             color: var(--text-color);
             margin: 0;
             padding: 0;
-            direction: ltr;
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background Image with Parallax */
+        #parallax-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 110%;
+            height: 110%;
+            background-image: url('https://i.postimg.cc/7YPTp7gn/njd.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -3;
+            transform: translate3d(0,0,0);
+            will-change: transform;
+        }
+
+        /* Dark Overlay */
+        .dark-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 10, 20, 0.6);
+            z-index: -2;
         }
 
         .container {
@@ -32,181 +61,164 @@
             margin: 0 auto;
             padding: 20px;
         }
-        
-        /* Header & Main Section */
+
+        /* Header */
         header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            text-align: center;
             padding: 20px 0;
         }
 
         .logo {
-            font-size: 28px;
-            font-weight: bold;
+            font-size: 32px;
+            font-weight: 700;
             color: var(--accent-color);
+            letter-spacing: 2px;
         }
 
-        /* Main Content with split layout */
+        /* Main Content */
         .main-content {
             display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 50px;
-            margin-top: 50px;
+            gap: 40px;
+            margin-top: 40px;
             padding: 40px;
             background-color: var(--secondary-color);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 18px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
         }
-        
+
         .image-container {
             flex: 1;
-            text-align: center;
         }
-        
+
         .image-container img {
             max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
         }
 
         .text-container {
             flex: 1;
-            padding: 20px;
         }
 
         .game-title {
-            font-size: 44px;
-            color: var(--text-color);
-            margin-bottom: 10px;
+            font-size: 48px;
             font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 10px;
         }
 
         .game-subtitle {
             font-size: 20px;
             color: var(--light-text);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
-        
+
+        .text-container p {
+            text-align: justify;
+            text-justify: inter-word;
+            color: var(--light-text);
+            margin-bottom: 30px;
+        }
+
+        /* Button */
         .cta-button {
             display: inline-block;
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            padding: 15px 40px;
-            border-radius: 5px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-strong));
+            color: #06131F;
+            padding: 15px 45px;
+            border-radius: 10px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
             font-size: 18px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.4);
+            box-shadow: 0 10px 25px rgba(0, 200, 255, 0.35);
+            transition: 0.3s ease;
         }
 
         .cta-button:hover {
-            background-color: #7affc8;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(100, 255, 218, 0.6);
-        }
-
-        /* Features Section */
-        .features-section {
-            margin-top: 60px;
-        }
-
-        .features-section h2 {
-            text-align: center;
-            font-size: 32px;
-            color: var(--text-color);
-            margin-bottom: 40px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-item {
-            background-color: var(--secondary-color);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-        
-        .feature-item:hover {
             transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 200, 255, 0.5);
         }
 
-        .feature-item h3 {
-            font-size: 20px;
-            color: var(--accent-color);
-            margin-top: 15px;
-        }
-
-        .feature-item p {
-            color: var(--light-text);
-            font-size: 15px;
-        }
-        
-        .feature-icon {
-            font-size: 40px;
-            color: var(--accent-color);
-        }
-        
-        /* Stats section */
         .stats-section {
-            margin-top: 50px;
+            margin-top: 30px;
             text-align: center;
         }
 
         .stats-grid {
             display: flex;
+            gap: 40px;
             justify-content: center;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
-        
-        .stat-item {
-            font-size: 18px;
-            font-weight: bold;
         }
 
         .stat-item .icon {
-            font-size: 24px;
-            margin-right: 5px;
+            font-size: 28px;
         }
-        
-        /* --- Mobile Responsiveness --- */
-        @media (max-width: 768px) {
-            .main-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 30px;
-                padding: 20px;
-            }
-            
-            .text-container {
-                padding: 0;
-            }
-            
-            .game-title {
-                font-size: 36px;
-            }
-            
-            .game-subtitle {
-                font-size: 18px;
-            }
 
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
+        /* Features section */
+        .features-section {
+            margin-top: 70px;
+        }
+
+        .features-section h2 {
+            text-align: center;
+            font-size: 34px;
+            margin-bottom: 40px;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .feature-item {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: 14px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+            transition: 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-color);
+            box-shadow: 0 14px 35px rgba(0, 200, 255, 0.25);
+        }
+
+        .feature-icon {
+            font-size: 44px;
+            color: var(--accent-strong);
+            margin-bottom: 12px;
+        }
+
+        .feature-item h3 {
+            color: var(--accent-color);
+            margin: 10px 0;
+            font-size: 22px;
+        }
+
+        .feature-item p {
+            color: var(--light-text);
+        }
+
+        @media (max-width: 768px) {
+            .main-content { flex-direction: column; text-align: center; }
+            .game-title { font-size: 36px; }
+            .features-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
+
 <body>
+
+    <!-- Background Layers -->
+    <div id="parallax-bg"></div>
+    <div class="dark-overlay"></div>
+
     <div class="container">
         <header>
             <div class="logo">GM-HOT</div>
@@ -215,66 +227,71 @@
         <main>
             <section class="main-content">
                 <div class="image-container">
-                    <img src="https://i.postimg.cc/C1KGHMyx/genshin-impact-hoyoverse-1536x864.jpg" alt="Viking Saga: Dragonborn Game Cover">
+                    <img src="https://i.postimg.cc/C1KGHMyx/genshin-impact-hoyoverse-1536x864.jpg">
                 </div>
+
                 <div class="text-container">
                     <h1 class="game-title">Genshin Impact</h1>
                     <p class="game-subtitle">What's special about this version of Genshin Impact:</p>
+
                     <p>
-                        Open-World Adventure: Explore the vast world of Teyvat, filled with hidden secrets, stunning landscapes, powerful enemies, and complete freedom to climb, glide, and discover new regions.
-Elemental Combat: Enjoy a dynamic combat system based on combining elements like Pyro, Cryo, Electro, Hydro, and more—giving you creative and strategic ways to fight.
-
-Character Collection: Unlock and build a team of unique characters, each with special elemental abilities and combat styles. Upgrade your team to reach their full potential.
-
-Quests & Story: Dive into a rich storyline with emotional characters, immersive missions, and an evolving world full of mystery.
-
-Smooth Gameplay: Experience high-quality graphics and smooth performance across most devices, ensuring an enjoyable and stable gameplay experience.
-
-Co-op Mode: Team up with friends to explore domains, defeat bosses, and take on challenging adventures together.
+                        Explore Teyvat, a vast world full of secrets, stunning regions, and powerful enemies.<br><br>
+                        Combine elemental powers to create reactions in dynamic combat.<br><br>
+                        Collect unique heroes and form your dream team.<br><br>
+                        Enjoy rich storytelling and immersive quests.<br><br>
+                        High-quality graphics with smooth gameplay.<br><br>
+                        Play solo or co-op with friends.
                     </p>
-                    <a href="https://monadel25.space/cl/i/d2qw6k" class="cta-button">Install Now</a>
-				
-                   
+
+                    <a href="#" class="cta-button">Install Now</a>
+
                     <div class="stats-section">
                         <div class="stats-grid">
-                            <div class="stat-item">
-                                <i class="fab fa-android icon" style="color: #3DDC84;"></i>
-                                Android
-                            </div>
-                            <div class="stat-item">
-                                <i class="fab fa-apple icon" style="color: #BDBDBD;"></i>
-                                iOS
-                            </div>
-                            <div class="stat-item">
-                                <i class="fas fa-star icon" style="color: #FFD700;"></i>
-                                9.5 / 10
-                            </div>
+                            <div class="stat-item"><i class="fab fa-android icon" style="color:#3DDC84;"></i> Android</div>
+                            <div class="stat-item"><i class="fab fa-apple icon" style="color:#CCCCCC;"></i> iOS</div>
+                            <div class="stat-item"><i class="fas fa-star icon" style="color:#FFD700;"></i> 9.5 / 10</div>
                         </div>
                     </div>
+
                 </div>
             </section>
-            
+
             <section class="features-section">
-                <h2>Why Play This Game?</h2>
+                <h2>Why Play Genshin Impact?</h2>
+
                 <div class="features-grid">
                     <div class="feature-item">
-                        <i class="fas fa-shield-alt feature-icon"></i>
-                        <h3>Secure & Safe</h3>
-                        <p>Enjoy a secure and risk-free gaming experience.</p>
+                        <i class="fas fa-mountain-sun feature-icon"></i>
+                        <h3>Epic World</h3>
+                        <p>Explore an enormous open-world full of adventures.</p>
                     </div>
+
                     <div class="feature-item">
-                        <i class="fas fa-gift feature-icon"></i>
-                        <h3>Exclusive Rewards</h3>
-                        <p>Get special gifts and bonuses you won't find anywhere else.</p>
+                        <i class="fas fa-wand-magic-sparkles feature-icon"></i>
+                        <h3>Elemental Combat</h3>
+                        <p>Create powerful reactions using elemental abilities.</p>
                     </div>
+
                     <div class="feature-item">
-                        <i class="fas fa-tachometer-alt feature-icon"></i>
-                        <h3>Smooth Performance</h3>
-                        <p>Experience fast and seamless gameplay on your device.</p>
+                        <i class="fas fa-camera feature-icon"></i>
+                        <h3>Stunning Visuals</h3>
+                        <p>Enjoy anime-style visuals with beautiful landscapes.</p>
                     </div>
                 </div>
             </section>
         </main>
     </div>
+
+    <!-- Parallax Script -->
+    <script>
+        const parallax = document.getElementById("parallax-bg");
+
+        document.addEventListener("mousemove", (e) => {
+            let x = (e.clientX / window.innerWidth) * 30;
+            let y = (e.clientY / window.innerHeight) * 30;
+            parallax.style.transform = `translate3d(-${x}px, -${y}px, 0)`;
+        });
+    </script>
+
 </body>
 </html>
